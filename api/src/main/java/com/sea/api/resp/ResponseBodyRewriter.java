@@ -17,13 +17,19 @@ public class ResponseBodyRewriter implements ResponseBodyAdvice<Object> {
 
   @Override
   public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
-    return false;
+    // todo 暂时拦截全部，后面可根据需求来决定要拦截哪些
+    return true;
   }
 
+  @SuppressWarnings({"unchecked", "rawtype"})
   @Override
   public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType,
       Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request,
       ServerHttpResponse response) {
-    return null;
+    if (body instanceof ApiResp) {
+      // 防止重复rewrite
+      return body;
+    }
+    return ApiResp.ok(body);
   }
 }
