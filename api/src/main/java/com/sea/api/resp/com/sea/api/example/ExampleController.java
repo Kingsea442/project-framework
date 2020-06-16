@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExampleController {
 
   @GetMapping(value = "/response/body/rewrite")
-  public ApiResp testResponseBodyRewrite() {
-    return ApiResp.ok("Hello World");
+  public List<String> testResponseBodyRewrite() {
+    return Lists.newArrayList("hello", "world");
   }
 }

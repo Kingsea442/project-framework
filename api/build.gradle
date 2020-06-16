@@ -1,8 +1,10 @@
 buildscript {
     dependencies {
         classpath("io.spring.gradle:dependency-management-plugin:$dependencyManagementVersion")
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
     }
 }
+
 plugins {
     id 'java'
     id 'java-library'
@@ -17,6 +19,7 @@ repositories {
 }
 
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'org.springframework.boot'
 dependencyManagement {
     imports {
         mavenBom "com.sea:dependency-management:1.0-SNAPSHOT"
@@ -32,6 +35,7 @@ dependencies {
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     api("org.springframework.boot:spring-boot-autoconfigure")
     api "org.springframework.boot:spring-boot-starter-web"
+    api("org.springframework.boot:spring-boot-starter-web")
 
     // util
     api("com.google.guava:guava")

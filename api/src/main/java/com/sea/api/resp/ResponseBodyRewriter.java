@@ -30,6 +30,7 @@ public class ResponseBodyRewriter implements ResponseBodyAdvice<Object> {
       // 防止重复rewrite
       return body;
     }
+
     return ApiResp.ok(body);
   }
 }
