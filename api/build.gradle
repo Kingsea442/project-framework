@@ -1,0 +1,44 @@
+buildscript {
+    dependencies {
+        classpath("io.spring.gradle:dependency-management-plugin:$dependencyManagementVersion")
+    }
+}
+plugins {
+    id 'java'
+    id 'java-library'
+}
+
+group 'com.sea'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+apply plugin: 'io.spring.dependency-management'
+dependencyManagement {
+    imports {
+        mavenBom "com.sea:dependency-management:1.0-SNAPSHOT"
+    }
+}
+
+dependencies {
+    // web
+    api("org.springframework:spring-core")
+    api("org.springframework:spring-webmvc")
+
+    // springboot
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+    api("org.springframework.boot:spring-boot-autoconfigure")
+
+    // util
+    api("com.google.guava:guava")
+    api("org.apache.commons:commons-lang3")
+    api("commons-io:commons-io")
+
+    // log
+    api("org.slf4j:slf4j-api")
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
