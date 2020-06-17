@@ -8,7 +8,7 @@ plugins {
     id 'java-library'
 }
 
-group 'com.sea'
+group 'com.sea.api'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -27,11 +27,6 @@ dependencies {
     // web
     api("org.springframework:spring-core")
     api("org.springframework:spring-webmvc")
-
-    // springboot
-    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
-    api("org.springframework.boot:spring-boot-autoconfigure")
-    api "org.springframework.boot:spring-boot-starter-web"
 
     // util
     api("com.google.guava:guava")
