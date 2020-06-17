@@ -11,11 +11,7 @@ ApiResp是定义的接口返回的数据结构，ResponseBodyRewriter负责重�
         "name":"OK",
         "msg":"succeed"
     },
-    "data":{
-        "user":{
-        },
-        "token":""
-    }
+    "data":object
 }
 ```
 status结构存储接口状态相关信息
