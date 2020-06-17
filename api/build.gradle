@@ -28,6 +28,11 @@ dependencies {
     api("org.springframework:spring-core")
     api("org.springframework:spring-webmvc")
 
+    // springboot
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+    api("org.springframework.boot:spring-boot-autoconfigure")
+    implementation "org.springframework.boot:spring-boot-starter-web"
+
     // util
     api("com.google.guava:guava")
     api("org.apache.commons:commons-lang3")
