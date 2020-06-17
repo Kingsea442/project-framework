@@ -11,6 +11,7 @@ public class ApiException extends RuntimeException{
 
   public ApiException(ApiError error) {
     this.error = error;
+    setTip(error.getDescription());
   }
 
   public ApiException(ApiError error, String tip) {
