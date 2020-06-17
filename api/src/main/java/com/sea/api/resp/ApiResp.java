@@ -1,8 +1,11 @@
 package com.sea.api.resp;
 
+import lombok.Getter;
+
 /**
  * Created by wanglh on 2020/6/16.
  */
+@Getter
 public class ApiResp {
   public static ApiResp OK = new ApiResp(Status.OK);
 
