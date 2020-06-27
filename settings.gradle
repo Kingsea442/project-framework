@@ -1,3 +1,4 @@
 rootProject.name = 'project-framework'
 include 'api'
+include 'example'
 

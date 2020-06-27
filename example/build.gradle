@@ -3,12 +3,13 @@ buildscript {
         classpath("io.spring.gradle:dependency-management-plugin:$dependencyManagementVersion")
     }
 }
+
 plugins {
     id 'java'
     id 'java-library'
 }
 
-group 'com.sea.api'
+group 'com.sea.example'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -24,6 +25,8 @@ dependencyManagement {
 }
 
 dependencies {
+    api(project(":api"))
+
     // web
     api("org.springframework:spring-core")
     api("org.springframework:spring-webmvc")
@@ -31,8 +34,7 @@ dependencies {
     // springboot
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     api("org.springframework.boot:spring-boot-autoconfigure")
-    api("org.springframework.boot:spring-boot-starter-web")
-    api("org.springframework.boot:spring-boot-starter-logging")
+    api "org.springframework.boot:spring-boot-starter-web"
 
     // util
     api("com.google.guava:guava")
@@ -40,7 +42,7 @@ dependencies {
     api("commons-io:commons-io")
 
     // log
-//    api("org.slf4j:slf4j-api")
+    api("org.slf4j:slf4j-api")
     annotationProcessor("org.projectlombok:lombok")
     compileOnly("org.projectlombok:lombok")
 

@@ -1,8 +1,9 @@
 主要总结个人项目中常用开发组件及一些好用的技巧
-## api-mvc
-封装一下组件：
+## api
+封装了接口层的相关组件：
 
 ### ApiResp 统一接口返回数据结构
+ApiResp是定义的接口返回的数据结构，ResponseBodyRewriter负责重写返回的数据
 ```json
 {
     "status":{
@@ -10,11 +11,7 @@
         "name":"OK",
         "msg":"succeed"
     },
-    "data":{
-        "user":{
-        },
-        "token":""
-    }
+    "data":object
 }
 ```
 status结构存储接口状态相关信息
