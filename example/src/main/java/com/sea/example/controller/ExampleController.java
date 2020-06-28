@@ -6,6 +6,8 @@ import com.sea.api.exception.ApiException;
 import com.sea.api.exception.BadRequestException;
 import com.sea.api.resp.ApiResp;
 import java.util.List;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +17,18 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(value = "/api/example/v1")
+@Slf4j
 public class ExampleController {
+  @RequestMapping(value = "/log/test")
+  public ApiResp log() {
+    log.info("log test info");
+    log.error("log test error");
+    log.warn("log test warn");
+    log.trace("log test trace");
+    System.out.println("test log output");
+
+    return ApiResp.ok(true);
+  }
 
   @GetMapping(value = "/resp/rewrite")
   public List<String> apiRespExample() {

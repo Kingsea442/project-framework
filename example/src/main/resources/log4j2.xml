@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" xmlns="http://logging.apache.org/log4j/2.0/config"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://logging.apache.org/log4j/2.0/config">
+    <Properties>
+        <Property name="log.dir">logs</Property>
+        <Property name="pattern">%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %t %c{1}:%L - %m%n</Property>
+        <Property name="pattern.simple">%d{yyyy-MM-dd HH:mm:ss,SSS} %m%n</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${pattern}"/>
+        </Console>
+
+        <!-- 自定义appender -->
+        <!-- default -->
+<!--        <RollingFile name="default" fileName="${log.dir}/default.log" filePatter="${log.dir}/default.log.%d{yyyyMMdd}">-->
+<!--            <PatternLayout pattern="${patter}"/>-->
+<!--            <Policies>-->
+<!--                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>-->
+<!--            </Policies>-->
+<!--        </RollingFile>-->
+
+
+    </Appenders>
+    <Loggers>
+        <Logger name="com.foo.Bar" level="trace">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

@@ -17,6 +17,10 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+}
+
 apply plugin: 'io.spring.dependency-management'
 dependencyManagement {
     imports {
@@ -35,6 +39,8 @@ dependencies {
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     api("org.springframework.boot:spring-boot-autoconfigure")
     api "org.springframework.boot:spring-boot-starter-web"
+    api("org.springframework.boot:spring-boot-starter-log4j2")
+
 
     // util
     api("com.google.guava:guava")
