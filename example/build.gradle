@@ -51,6 +51,11 @@ dependencies {
     api("org.slf4j:slf4j-api")
     annotationProcessor("org.projectlombok:lombok")
     compileOnly("org.projectlombok:lombok")
+    compileOnly("org.apache.logging.log4j:log4j-core")
+    // 生成自定义appender的log4j2配置文件:
+    // build/classes/java/main/META-INF/org/apache/logging/log4j/core/config/plugins/Log4j2Plugins.dat
+    annotationProcessor("org.apache.logging.log4j:log4j-core")
+
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }

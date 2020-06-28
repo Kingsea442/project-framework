@@ -8,6 +8,17 @@ plugins {
     id 'java-library'
 }
 
+
+// copy spring-configuration-metadata.json when it's generated
+compileJava.doLast {
+    project.copy {
+        from("${sourceSets.main.java.outputDir}/META-INF") {
+            include "*.json"
+        }
+        into "src/main/resources/META-INF"
+    }
+}
+
 group 'com.sea.api'
 version '1.0-SNAPSHOT'
 
@@ -38,8 +49,10 @@ dependencies {
     api("org.apache.commons:commons-lang3")
     api("commons-io:commons-io")
 
+    compileOnly("com.fasterxml.jackson.core:jackson-databind")
+
     // log
-//    api("org.slf4j:slf4j-api")
+    api("org.slf4j:slf4j-api")
     annotationProcessor("org.projectlombok:lombok")
     compileOnly("org.projectlombok:lombok")
 

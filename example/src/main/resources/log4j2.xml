@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN" xmlns="http://logging.apache.org/log4j/2.0/config"
-               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-               xsi:schemaLocation="http://logging.apache.org/log4j/2.0/config">
+<Configuration status="WARN">
     <Properties>
         <Property name="log.dir">logs</Property>
         <Property name="pattern">%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %t %c{1}:%L - %m%n</Property>
@@ -15,21 +13,38 @@
 
         <!-- 自定义appender -->
         <!-- default -->
-<!--        <RollingFile name="default" fileName="${log.dir}/default.log" filePatter="${log.dir}/default.log.%d{yyyyMMdd}">-->
-<!--            <PatternLayout pattern="${patter}"/>-->
-<!--            <Policies>-->
-<!--                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>-->
-<!--            </Policies>-->
-<!--        </RollingFile>-->
+        <RollingFile name="default" fileName="${log.dir}/default.log" filePattern="${log.dir}/default.log.%d{yyyyMMdd}">
+            <PatternLayout pattern="${pattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+        </RollingFile>
 
+        <!-- error -->
+        <RollingFile name="error" fileName="${log.dir}/error.log" filePattern="${log.dir}/error.log.%d{yyyyMMdd}">
+            <PatternLayout pattern="${pattern}"/>
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+        </RollingFile>
+
+        <!-- api -->
+        <RollingFile name="api" fileName="${log.dir}/api.log" filePattern="${log.dir}/api.log.%d{yyyyMMdd}">
+            <PatternLayout pattern="${pattern.simple}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+        </RollingFile>
 
     </Appenders>
     <Loggers>
-        <Logger name="com.foo.Bar" level="trace">
-            <AppenderRef ref="Console"/>
-        </Logger>
         <Root level="info">
-            <AppenderRef ref="Console"/>
+            <AppenderRef ref="default"/>
+            <AppenderRef ref="error"/>
         </Root>
+        <Logger name="log.api" level="INFO" additivity="false">
+            <AppenderRef ref="api"/>
+        </Logger>
     </Loggers>
 </Configuration>
