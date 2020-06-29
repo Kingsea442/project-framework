@@ -27,14 +27,9 @@ repositories {
     mavenCentral()
 }
 
-apply plugin: 'io.spring.dependency-management'
-dependencyManagement {
-    imports {
-        mavenBom "com.sea:dependency-management:1.0-SNAPSHOT"
-    }
-}
-
 dependencies {
+    api(project(":common"))
+
     // web
     api("org.springframework:spring-core")
     api("org.springframework:spring-webmvc")

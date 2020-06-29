@@ -1,9 +1,29 @@
+buildscript {
+    dependencies {
+        classpath("io.spring.gradle:dependency-management-plugin:$dependencyManagementVersion")
+    }
+}
+
 plugins {
     id 'java'
 }
 
 group 'com.sea'
 version '1.0-SNAPSHOT'
+
+subprojects {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    apply plugin: 'io.spring.dependency-management'
+    dependencyManagement {
+        imports {
+            mavenBom "com.sea:dependency-management:1.0-SNAPSHOT"
+        }
+    }
+}
 
 repositories {
     mavenCentral()
