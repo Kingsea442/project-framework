@@ -18,7 +18,6 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
  * 拦截api请求，输出api log
  * Created by wanglh on 2020/6/28.
  */
-@Component
 @Slf4j
 public class ApiLogInterceptor extends HandlerInterceptorAdapter implements InitializingBean {
   // 需要在项目log4j2.xml中配置log.api的logger
@@ -28,18 +27,20 @@ public class ApiLogInterceptor extends HandlerInterceptorAdapter implements Init
 
   @Override
   public void afterPropertiesSet() throws Exception {
+    log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&");
     Preconditions.checkNotNull(objectMapper, "no ObjectMapper");
   }
 
   @Override
-  public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-    System.out.println("###############");
+  public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+    log.info("ppppppppppppppppppppppppp");
     request.setAttribute(KEY_API_HANDLE_START, System.currentTimeMillis());
     return true;
   }
 
   @Override
   public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
+    log.info("aaaaaaaaaaaaaaaaaaaaa");
     try {
       ObjectNode logNode = objectMapper.createObjectNode();
       final long cost = System.currentTimeMillis() - (long) request.getAttribute(KEY_API_HANDLE_START);

@@ -1,8 +1,10 @@
 package com.sea.api;
 
+import com.google.common.collect.Lists;
 import com.sea.api.mvc.ApiLogInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
@@ -16,4 +18,8 @@ public class MvcConfiguration implements WebMvcConfigurer {
     return new ApiLogInterceptor();
   }
 
+  @Override
+  public void addInterceptors(InterceptorRegistry registry) {
+    registry.addInterceptor(apiLogInterceptor()).addPathPatterns(Lists.newArrayList("/api/**"));
+  }
 }
