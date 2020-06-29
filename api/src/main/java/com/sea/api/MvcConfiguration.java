@@ -18,6 +18,10 @@ public class MvcConfiguration implements WebMvcConfigurer {
     return new ApiLogInterceptor();
   }
 
+  /**
+   * 注册自定义的interceptor
+   * @param registry
+   */
   @Override
   public void addInterceptors(InterceptorRegistry registry) {
     registry.addInterceptor(apiLogInterceptor()).addPathPatterns(Lists.newArrayList("/api/**"));

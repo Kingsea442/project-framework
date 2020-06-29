@@ -46,6 +46,7 @@ public class ApiLogInterceptor extends HandlerInterceptorAdapter implements Init
       if (handler instanceof HandlerMethod) {
         logNode.put("handler", ((HandlerMethod) handler).getMethod().toGenericString());
       }
+      logNode.put("url", request.getRequestURL().toString());
 
       apiLogger.info(objectMapper.writeValueAsString(logNode));
     } catch (Throwable t) {

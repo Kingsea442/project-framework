@@ -7,9 +7,9 @@ import org.springframework.context.annotation.Import;
 /**
  * Created by wanglh on 2020/6/28.
  */
-//@Configuration
-//@ComponentScan
-//@Import({MvcConfiguration.class})
+@Configuration
+@ComponentScan
+@Import({MvcConfiguration.class})
 public class ApiFrameworkAutoConfiguration {
 
 }
