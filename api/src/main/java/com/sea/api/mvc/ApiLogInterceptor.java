@@ -27,20 +27,17 @@ public class ApiLogInterceptor extends HandlerInterceptorAdapter implements Init
 
   @Override
   public void afterPropertiesSet() throws Exception {
-    log.info("&&&&&&&&&&&&&&&&&&&&&&&&&&");
     Preconditions.checkNotNull(objectMapper, "no ObjectMapper");
   }
 
   @Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-    log.info("ppppppppppppppppppppppppp");
     request.setAttribute(KEY_API_HANDLE_START, System.currentTimeMillis());
     return true;
   }
 
   @Override
   public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
-    log.info("aaaaaaaaaaaaaaaaaaaaa");
     try {
       ObjectNode logNode = objectMapper.createObjectNode();
       final long cost = System.currentTimeMillis() - (long) request.getAttribute(KEY_API_HANDLE_START);
@@ -51,7 +48,6 @@ public class ApiLogInterceptor extends HandlerInterceptorAdapter implements Init
       }
 
       apiLogger.info(objectMapper.writeValueAsString(logNode));
-      System.out.println("$$$$$$$$$$$$$$$$");
     } catch (Throwable t) {
       log.error("Fail to log api, url: " + request.getRequestURL().toString(), t);
     }
