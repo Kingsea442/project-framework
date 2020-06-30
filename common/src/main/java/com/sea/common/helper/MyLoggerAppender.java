@@ -30,6 +30,7 @@ public class MyLoggerAppender extends AbstractAppender {
 
   @Override
   public void append(LogEvent event) {
+    // todo 实现自己的业务需求，比如输出log到钉钉，飞书等
     System.out.println("do what you want to do here");
   }
 
