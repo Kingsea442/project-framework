@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectMapper.DefaultTyping;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.common.base.Preconditions;
+import com.sea.common.util.RequestUtil;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -43,11 +44,10 @@ public class ApiLogInterceptor extends HandlerInterceptorAdapter implements Init
       final long cost = System.currentTimeMillis() - (long) request.getAttribute(KEY_API_HANDLE_START);
       logNode.put("cost", cost);
       logNode.put("status", response.getStatus());
+      logNode.put("requestId", RequestUtil.resolveRequestId());
       if (handler instanceof HandlerMethod) {
         logNode.put("handler", ((HandlerMethod) handler).getMethod().toGenericString());
       }
-
-//      if (ex != null || request.getAttribute())
 
       logNode.put("url", request.getRequestURL().toString());
 

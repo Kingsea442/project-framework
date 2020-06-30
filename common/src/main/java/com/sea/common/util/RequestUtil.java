@@ -1,5 +1,6 @@
 package com.sea.common.util;
 
+import com.sea.common.framework.api.ApiAttributes;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -10,7 +11,8 @@ import org.springframework.web.context.request.RequestContextHolder;
 public class RequestUtil {
 
   public static String resolveRequestId() {
-    return StringUtils.defaultString(resolveRequestId());
+    String requestId = (String) resolveRequestAttribute(ApiAttributes.API_REQUEST_ID);
+    return StringUtils.defaultString(requestId);
   }
 
   public static Object resolveRequestAttribute(String key) {
