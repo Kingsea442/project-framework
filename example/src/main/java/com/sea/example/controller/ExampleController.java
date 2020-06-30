@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/example/v1")
 @Slf4j
 public class ExampleController {
+  private static final Logger seaLogger = LoggerFactory.getLogger("custom.sea");
 
   @RequestMapping(value = "/log/test")
   public ApiResp log() {
@@ -29,6 +30,7 @@ public class ExampleController {
     log.warn("log test warn");
     log.trace("log test trace");
     System.out.println("test log output");
+    seaLogger.info("hello seaaaaaa");
 
     return ApiResp.ok(true);
   }

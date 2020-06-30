@@ -17,6 +17,7 @@ configurations {
 
 dependencies {
     api(project(":api"))
+    api(project(":common"))
 
     // web
     api("org.springframework:spring-core")
