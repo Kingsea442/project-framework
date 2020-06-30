@@ -10,7 +10,19 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+}
+
 dependencies {
+    // springboot
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+    api("org.springframework.boot:spring-boot-autoconfigure")
+    api("org.springframework.boot:spring-boot-starter-web")
+
+    // common
+    api("org.apache.commons:commons-lang3")
+
     // log
     api("org.slf4j:slf4j-api")
     api("org.apache.logging.log4j:log4j-core")
