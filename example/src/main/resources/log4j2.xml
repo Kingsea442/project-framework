@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 会自动加载packages里自定义的的日志appender -->
 <Configuration status="WARN" packages="com.sea.common.helper">
     <Properties>
         <Property name="log.dir">logs</Property>
