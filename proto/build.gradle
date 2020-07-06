@@ -1,0 +1,35 @@
+plugins {
+    id 'java-library'
+    id 'idea'
+}
+
+idea {
+    module {
+        // mark proto directory as source root
+        sourceDirs += sourceSets.main.proto.sourceDirectories
+    }
+}
+
+protobuf {
+    generatedFilesBaseDir = "$projectDir/gen/"
+    generateProtoTasks {
+        ofSourceSet('main')
+    }
+}
+
+group 'com.sea.common.proto'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    mavenCentral()
+}
+
+clean {
+    delete(protobuf.generatedFilesBaseDir)
+}
+
+dependencies {
+    api("com.google.protobuf:protobuf-java")
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
