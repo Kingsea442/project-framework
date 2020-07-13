@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 任务管理
- * 负责任务的执行，调度，更行
+ * 负责任务的执行，调度，更新
  * Created by wanglh on 2020/7/13.
  */
 @Component
@@ -48,6 +48,7 @@ public class TaskManager implements InitializingBean {
 
     ThreadFactory factory = new ThreadFactoryBuilder().setDaemon(true).setNameFormat("export-task-%d")
         .setUncaughtExceptionHandler((t, e) -> log.warn(t.getName(), e)).build();
+    Executors.newFixedThreadPool(threadNum, factory);
     this.executor = Executors.newFixedThreadPool(threadNum, factory);
     this.reporter = new TaskProgressReporter(this, 2);
   }
