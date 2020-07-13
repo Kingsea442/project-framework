@@ -1,0 +1,18 @@
+plugins {
+    id 'java-library'
+}
+
+group 'com.sea.export'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    mavenCentral()
+}
+
+dependencies {
+    api(project(":common"))
+    annotationProcessor("org.projectlombok:lombok")
+    api("org.projectlombok:lombok")
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
