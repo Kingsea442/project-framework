@@ -20,8 +20,13 @@ dependencies {
     api("org.springframework.boot:spring-boot-autoconfigure")
     api("org.springframework.boot:spring-boot-starter-web")
 
-    // common
+    // util
+    api("com.google.guava:guava")
     api("org.apache.commons:commons-lang3")
+    api("commons-io:commons-io")
+    annotationProcessor("org.projectlombok:lombok")
+    api("org.projectlombok:lombok")
+
 
     // log
     api("org.slf4j:slf4j-api")
