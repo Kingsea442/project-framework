@@ -16,9 +16,9 @@ configurations {
 }
 
 dependencies {
-    api(project(":api"))
     api(project(":common"))
     api(project(":export"))
+    api(project(":api-starter"))
 
     // web
     api("org.springframework:spring-core")
@@ -27,7 +27,6 @@ dependencies {
     // springboot
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     api("org.springframework.boot:spring-boot-autoconfigure")
-    api "org.springframework.boot:spring-boot-starter-web"
     api("org.springframework.boot:spring-boot-starter-log4j2")
 
 
