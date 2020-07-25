@@ -58,6 +58,7 @@ public class TaskProgressReporter implements Runnable{
       }
 
       if (progress.isChanged()) {
+        // 任务有变动就更新到数据库中，这样前端可以看到任务进度的变动
         this.manager.updateProgress(taskId, progress.report());
       }
     }
@@ -80,16 +81,28 @@ public class TaskProgressReporter implements Runnable{
      */
     private long reportTime;
 
+    /**
+     * 更新进度
+     * @param delta
+     */
     public void delta(long delta) {
       this.updateTime = System.currentTimeMillis();
       adder.add(delta);
     }
 
+    /**
+     * 报告当前进度
+     * @return
+     */
     public int report() {
       this.reportTime = System.currentTimeMillis();
       return adder.intValue();
     }
 
+    /**
+     * 判断任务进度是否有变动
+     * @return
+     */
     public boolean isChanged() {
       return reportTime < updateTime;
     }
